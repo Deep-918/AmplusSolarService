@@ -1,0 +1,119 @@
+<div class="service-request" *ngIf="serviceRequestDetails">
+    <div class="row">
+      <div class="col-sm-6 serviceDetails" >
+        <div class="service-number">
+          {{serviceRequestDetails.requestNumber}}
+          <span class="order-type">
+            <select class="select-order-type" >
+              <option [selected]="serviceRequestDetails.materialDetail == 'Material order'">Material order</option>
+              <option [selected]="serviceRequestDetails.materialDetail == 'Material setup'">Material setup</option>
+              <option [selected]="serviceRequestDetails.materialDetail == 'Material query'">Material query</option>
+          </select>
+          </span>
+        </div>
+        <div class= "service-date">
+          {{formattedDate}} | 1:15 PM
+        </div>
+      </div>
+      <div class="col-sm-5 scheduledDetails">
+        <div class="row">
+          <div class="scheduledOn" >
+            Scheduled On
+          </div>
+          <div class="calendar">
+        <mat-form-field appearance="fill">
+          <input matInput [matDatepicker]="picker" [value]="calendarDate.value" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+          </div>
+        </div>
+        <div class="schedule-date">
+          {{scheduledDate}}
+        </div>
+      </div>
+    </div>
+   
+<form [formGroup]="serviceRequestform" class="servive-form" (ngSubmit)="onSubmit()">
+  <div class="form-row">
+    <div class="form-group col-md-6" [ngClass]="(isSubmitted && type.errors?.required && !subType.errors?.required) ? 'decrease-margin-bottom' : ''">
+      <label for="inputType">Type</label>
+      <select class="form-control" [ngClass]="{'wrap-field': (isSubmitted && type.errors?.required)}" formControlName="type" (change)="changeType($event)">
+        <option value="">Select Type</option>
+      <option *ngFor="let type of Type" [value]="type" >{{type}}
+      </option>
+      </select>
+      <span class="invalid-feedback  alert-danger" *ngIf="(isSubmitted && type.errors?.required)">
+        <sup>*</sup>Please select type
+      </span>
+    </div>
+    <div class="form-group col-md-6" [ngClass]="(isSubmitted && type.errors?.required && !subType.errors?.required) ? 'increase-margin-bottom' : ''">
+      <label for="inputSubType">Sub Type</label>
+      <select class="form-control" [ngClass]="{'wrap-field': (isSubmitted && subType.errors?.required)}" [formControlName]="'subType'" (change)="changeSubType($event)">
+        <option value="">Select Sub Type</option>
+      <option *ngFor="let subType of SubType" [value]="subType" >{{subType}}
+      </option>
+      </select>
+      <div class="invalid-feedback  alert-danger" *ngIf="(isSubmitted && subType.errors?.required)">
+        <sup>*</sup>Please select sub type
+     </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPaymentStatus">Payment Status</label>
+      <select class="form-control" [ngClass]="{'wrap-field': (isSubmitted && paymentStatus.errors?.required)}" formControlName="paymentStatus" (change)="changePaymentStatus($event)">
+        <option value="">Select Payment Status</option>
+      <option *ngFor="let payment of PaymentStatus" [value]="payment" >{{payment}}
+      </option>
+      </select>
+      <div class="invalid-feedback  alert-danger" *ngIf="(isSubmitted && paymentStatus.errors?.required)">
+        <sup>*</sup>Please select payment status
+     </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputAssignedTo">Assigned To</label>
+      <select class="form-control" [ngClass]="{'wrap-field': (isSubmitted && assignedTo.errors?.required)}" formControlName="assignedTo" (change)="changeAssignedTo($event)">
+        <option value="">Select Assigned To</option>
+      <option *ngFor="let assigned of AssignedTo" [value]="assigned" >{{assigned}}
+      </option>
+      </select>
+      <div class="invalid-feedback  alert-danger" *ngIf="(isSubmitted && assignedTo.errors?.required)">
+        <sup>*</sup>Please select assigned to
+     </div>
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-12">
+    <label for="inputDescription">Description</label>
+    <textarea class="form-control description" [ngClass]="{'wrap-field': (isSubmitted && description.errors?.required)}" formControlName="description"></textarea>
+    <div class="invalid-feedback  alert-danger" *ngIf="(isSubmitted && description.errors?.required)">
+      <sup>*</sup>Please enter description
+   </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2 selectImage">
+      <input #imageInput
+        type="file"
+        (change)="preview(imageInput)"
+        class="upload"
+        id="upload">
+      <a href="" (click)="slectImage($event)">
+      <i class="fa fa-plus" aria-hidden="true">
+      </i>
+      </a>
+    </div>
+    <div class="col-sm-2 previewImage" *ngIf="showImagePreview">
+      <a href="" (click)="hideImagePreview($event)">
+        <i class="fa fa-times-circle fa-lg" aria-hidden="true">
+        </i>
+        </a>
+        <img class="showImage" [src]="imageUrl" />
+    </div>
+    </div>
+    <div class="form-group col-md-6 submit-button">
+      <button type="submit" class="btn btn-primary btn-lg">Update</button>
+      </div>
+</form>
+    </div>

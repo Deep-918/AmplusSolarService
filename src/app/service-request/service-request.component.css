@@ -1,0 +1,193 @@
+div.service-request {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+div.serviceDetails {
+    height: 100px;
+    box-sizing: border-box;
+    background-color: #fae9da;
+    border-radius: 20px;
+    border-left: 3px solid #eeb583;
+}
+
+div.scheduledDetails {
+    margin-left: 4rem;
+    width: 30%;
+    height: 100px;
+    border: 1px solid #e2ebf5;
+    box-sizing: border-box;
+    background-color: #f0f5fa;
+    border-radius: 20px;
+    
+}
+
+.selectImage, .previewImage{
+    height: 120px;
+    box-sizing: border-box;
+    background-color: #e9dafa;
+    border-radius: 20px;
+}
+
+.servive-form{
+    margin-top: 2rem;
+    margin-left: -2rem;
+}
+
+.alert-danger{
+    background-color: unset;
+}
+
+.previewImage{
+    margin-left: 4rem;
+}
+
+.selectImage{
+    margin-left: 3rem;
+    text-align: center;
+}
+
+textarea.description{
+    resize: none;
+}
+
+div.submit-button{
+    margin-top: 1.5rem;
+}
+
+.fa-plus{
+    top: calc(50% - 10px);
+    position: relative;
+}
+
+.fa-times-circle{
+   float: right;
+   margin-right: -2rem;
+   color: black;
+}
+
+.service-number {
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 2rem;
+}
+
+.service-date {
+    padding-top: .5rem;
+}
+
+.upload{
+    display: none;
+}
+
+img.showImage{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10%;
+}
+
+::ng-deep .mat-form-field-flex {
+    background-color: #f0f5fa !important;
+}
+
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-input-element {
+    display: none;
+}
+
+::ng-deep .mat-form-field {
+    width: 50px;
+    float: right;
+    margin-top: -15px;
+}
+
+.calendar{
+    margin-top: -1.5rem;
+}
+
+.scheduledOn{
+    padding-left: 3rem;
+    padding-top: 2rem;
+    width: 50%;
+    font-size: 16px;
+    color: #878787;
+}
+
+.schedule-date {
+    font-size: 20px;
+    margin-top: -2rem;
+    padding-left: 1.5rem;
+}
+
+.select-order-type{
+    background-color: #fae9da;
+    color: #eeb583;
+    border: 2px solid #eeb583;
+    border-radius: 10px;
+
+}
+
+.order-type{
+    padding-left: 10rem;
+}
+
+.wrap-field{
+    border: 1px solid #a94442;
+}
+
+.btn-lg{
+    width: 120px;
+}
+
+@media all and (max-width: 959px) and (min-width: 799px) {
+    div.scheduledDetails {
+        width: 40%;
+        
+    }
+}
+
+@media all and (min-width: 960px) {
+    .increase-margin-bottom{
+        margin-bottom: 25px;
+    }
+    .decrease-margin-bottom{
+        margin-bottom: 5px;
+    }
+
+    .servive-form{
+        width: 90%;
+    }
+
+    .selectImage, .previewImage{
+        width: 12%;
+    }
+
+}
+
+
+
+@media all and (max-width:959px) {
+    .order-type{
+         padding-left: 1rem;
+    }
+    .service-number {
+        font-size: 16px;
+        font-weight: 500;
+        padding-top: 2rem;
+    }
+}
+
+@media all and (max-width:724px) {
+    div.scheduledDetails {
+        margin-top: 2rem;
+        margin-left: 0;
+        width: 70%;
+    }
+    div.service-request {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .selectImage, .previewImage{
+        width: 30%;
+    }
+}

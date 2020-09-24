@@ -1,0 +1,22 @@
+
+
+
+<div class="container">
+  <div class="row viewItems">
+    <div class="col-md-12"> 
+      <!-- Nav tabs -->
+      <div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" [ngClass]="{'active': (isServiceRequestSelected)}" (click)="selectServiceRequest()"><a href="#" aria-controls="Service Request" role="tab" data-toggle="tab">  <span>Service Request</span></a></li>
+          <li role="presentation" [ngClass]="{'active': (isActivityLogSelected)}" (click)="selectActivityLog()"><a href="#" aria-controls="Activity Log" role="tab" data-toggle="tab"> <span>Activity Log</span></a></li>
+          <li role="presentation" [ngClass]="{'active': (isSpareItemsSelected)}" (click)="selectSpareItems()"><a href="#" aria-controls="Spare Items" role="tab" data-toggle="tab"> <span>Spare Items</span></a></li>
+          
+        </ul>
+        
+
+      </div>
+      <app-service-request *ngIf="isServiceRequestSelected"></app-service-request>
+      <app-activity-log *ngIf="isActivityLogSelected"></app-activity-log>
+    </div>
+  </div>
+</div>
